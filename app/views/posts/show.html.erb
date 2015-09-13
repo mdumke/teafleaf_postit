@@ -1,0 +1,18 @@
+<h3> <%= @post.title %> </h3>
+<p>
+  posted by <%= @post.creator.username %>
+  <%= time_ago_in_words(@post.created_at) %> ago
+</p>
+
+<br>
+
+<div class="post-description">
+  <%= @post.description %>
+</div>
+
+<br>
+
+<h4>Comments:</h4>
+<%= render partial: 'comment', collection: @comments %>
+
+<%= link_to 'Back', posts_path %>
