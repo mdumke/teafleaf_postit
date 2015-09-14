@@ -1,0 +1,27 @@
+<!-- row -->
+<div class="row">
+
+  <!-- well -->
+  <div class="span8 well">
+
+    <%= render post.categories %>
+
+    <h4><%= link_to post.title, post.url %></h4>
+    <p><%= post.description %></p>
+    <p>
+      <span class='quiet'>posted by</span> <%= post.creator.username %>
+
+      <small>
+        <%= time_ago_in_words(post.created_at) %> ago
+      </small>
+    </p>
+
+    <small>
+      <span>
+        <%= link_to("#{post.comments.size} comments", post_path(post)) %>
+      </span>
+    </small>
+
+  </div><!-- /well -->
+
+</div><!-- /row -->

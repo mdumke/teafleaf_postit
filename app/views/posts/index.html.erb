@@ -1,1 +1,3 @@
-<%= render partial: 'post_list_item', collection: @posts.all, spacer_template: 'rule_spacer' %>
+<%= render 'shared/content_title', title: 'All Posts' %>
+
+<%= render @posts %>
