@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update]
+
   # GET /posts
   def index
     @posts = Post.all
@@ -6,7 +8,6 @@ class PostsController < ApplicationController
 
   # GET /posts/:id
   def show
-    @post = Post.find_by_id(params[:id])
     redirect_to 'index' unless @post
 
     @comments = @post.comments
@@ -38,11 +39,21 @@ class PostsController < ApplicationController
 
   # PATCH /posts/:id
   def update
+    if @post.update(post_params)
+      flash['notice'] = 'Your post was updated'
+      redirect_to @post
+    else
+      render 'edit'
+    end
   end
 
   private
 
   def post_params
     params.require(:post).permit(:title, :url, :description)
+  end
+
+  def set_post
+    @post = Post.find_by_id(params[:id])
   end
 end
