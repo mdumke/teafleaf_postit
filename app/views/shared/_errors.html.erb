@@ -1,0 +1,25 @@
+<% if object.errors.any? %>
+
+  <!-- row -->
+  <div class="row">
+
+    <!-- alert -->
+    <div class="alert alert-error span8">
+
+      <h5>Please fix the following errors:</h5>
+
+      <ul>
+
+        <% object.errors.full_messages.each do |msg| %>
+
+          <li><%= msg %></li>
+
+        <% end %>
+
+      </ul>
+
+    </div><!-- /alert -->
+
+  </div><!-- /row -->
+
+<% end %>
