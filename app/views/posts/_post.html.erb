@@ -6,13 +6,13 @@
 
     <%= render post.categories %>
 
-    <h4><%= link_to post.title, post.url %></h4>
+    <h4><%= link_to post.title, fix_url(post.url) %></h4>
     <p><%= post.description %></p>
     <p>
       <span class='quiet'>posted by</span> <%= post.creator.username %>
 
       <small>
-        <%= time_ago_in_words(post.created_at) %> ago
+        <%= display_datetime(post.created_at) %>
       </small>
     </p>
 
