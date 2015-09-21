@@ -8,9 +8,7 @@ class PostsController < ApplicationController
 
   # GET /posts/:id
   def show
-    redirect_to 'index' unless @post
-
-    @comments = @post.comments
+    @comment = Comment.new
   end
 
   # GET /posts/new
