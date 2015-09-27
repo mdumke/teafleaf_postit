@@ -2,9 +2,6 @@
   <li>
     <%= link_to "Postit!", root_path, :class => 'brand' %>
   </li>
-  <li>
-    <%= link_to 'link', '' %>
-  </li>
 </ul>
 
 <!-- nav-item -->
@@ -21,23 +18,39 @@
 
     <% end %>
 
-    <li class='divider'></li>
+    <% if logged_in? %>
 
-    <li>
-      <%= link_to(new_category_path) do %>
-        <i class='icon-plus'></i>
-        New Category
-      <% end %>
-    </li>
+      <li class='divider'></li>
+
+      <li>
+        <%= link_to(new_category_path) do %>
+          <i class='icon-plus'></i>
+          New Category
+        <% end %>
+      </li>
+
+    <% end %>
 
   </ul>
 
 </div><!-- /nav-item -->
 
 
-<!-- nav-item -->
-<div class="nav_item">
+<% if logged_in? %>
 
-  <%= link_to 'New Post', new_post_path, class: 'btn btn-success btn-small' %>
+  <div class="nav_item">
+    <%= link_to 'New Post', new_post_path, class: 'btn btn-success btn-small' %>
+  </div>
 
-</div><!-- /nav-item -->
+  <div class="nav_item">
+    <%= link_to 'Log out', logout_path, class: 'btn btn-small' %>
+  </div>
+
+<% else %>
+
+  <div class="nav_item">
+    <%= link_to 'Log in', login_path, class: 'btn btn-small' %>
+  </div>
+
+<% end %>
+
