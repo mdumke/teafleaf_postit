@@ -1,0 +1,24 @@
+<% show_post ||= false %>
+
+<% if comment && comment.creator %>
+
+  <!-- well -->
+  <div class="well span8">
+
+    <em><%= comment.body %></em>
+
+    <% if show_post %>
+      on <%= link_to comment.post.title, comment.post %>
+    <% end %>
+
+    <p>
+      <span class='quiet'>by</span> <%= link_to comment.creator.username, comment.creator %>
+
+      <small>
+        <%= comment.created_at %>
+      </small>
+    </p>
+
+  </div><!-- /well -->
+
+<% end %>
