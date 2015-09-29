@@ -2,23 +2,47 @@
 
 <% if comment && comment.creator %>
 
-  <!-- well -->
-  <div class="well span8">
+  <!-- row -->
+  <div class="row">
 
-    <em><%= comment.body %></em>
+    <!-- well -->
+    <div class="well span0 text-center">
 
-    <% if show_post %>
-      on <%= link_to comment.post.title, comment.post %>
-    <% end %>
+      <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post' do %>
+        <i class='icon-arrow-up'></i>
+      <% end %>
 
-    <p>
-      <span class='quiet'>by</span> <%= link_to comment.creator.username, comment.creator %>
+      <br>
 
-      <small>
-        <%= comment.created_at %>
-      </small>
-    </p>
+      <%= comment.total_votes %>
 
-  </div><!-- /well -->
+      <br>
+
+      <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post' do %>
+        <i class='icon-arrow-down'></i>
+      <% end %>
+
+    </div><!-- /well -->
+
+    <!-- well -->
+    <div class="well span8">
+
+      <em><%= comment.body %></em>
+
+      <% if show_post %>
+        on <%= link_to comment.post.title, comment.post %>
+      <% end %>
+
+      <p>
+        <span class='quiet'>by</span> <%= link_to comment.creator.username, comment.creator %>
+
+        <small>
+          <%= comment.created_at %>
+        </small>
+      </p>
+
+    </div><!-- /well -->
+
+  </div><!-- /row -->
 
 <% end %>
