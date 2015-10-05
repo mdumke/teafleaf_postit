@@ -1,0 +1,7 @@
+<% if @vote.valid? %>
+  $('#post_<%= @post.id %>_votes').html(
+    '<%= @post.total_votes %> votes'
+  );
+<% else %>
+  alert('You can only vote once on a post');
+<% end %>
