@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
   private
 
   def set_category
-    @category = Category.find_by_id(params[:id])
+    @category = Category.find_by_slug(params[:id])
 
     unless @category
       flash['error'] = 'Could not find this category'
