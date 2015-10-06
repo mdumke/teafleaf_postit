@@ -17,16 +17,20 @@ module Sluggable
   end
 
   def generate_slug
-    base_slug = to_slug(name)
-    category = class.find_by_slug(base_slug)
+    the_slug = self.send(self.class.slug_column.to_sym)
+    return unless the_slug
+
+    base_slug = to_slug(the_slug)
+
+    obj = self.class.find_by_slug(base_slug)
 
     count = 2
     current_slug = base_slug
 
-    while category && category != self
+    while obj && obj != self
       current_slug = base_slug + "-#{count}"
 
-      category = class.find_by_slug(current_slug)
+      obj = self.class.find_by_slug(current_slug)
       count += 1
     end
 
