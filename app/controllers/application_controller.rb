@@ -25,8 +25,8 @@ class ApplicationController < ActionController::Base
     access_denied unless admin?
   end
 
-  def access_denied
+  def access_denied(target = nil)
     flash['error'] = 'Permission denied!'
-    redirect_to login_path
+    redirect_to root_path
   end
 end

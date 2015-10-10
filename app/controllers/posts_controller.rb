@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :vote]
   before_action :require_user, except: [:index, :show, :vote]
+  before_action :require_same_user_or_admin, only: [:edit]
 
   # GET /posts
   def index
@@ -72,5 +73,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find_by_slug(params[:id])
+  end
+
+  def require_creator_or_admin
+    access_denied unless logged_in? && (current_user == @post.creator) || admin?
   end
 end
