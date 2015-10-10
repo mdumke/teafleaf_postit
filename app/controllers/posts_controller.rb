@@ -6,11 +6,23 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.all.sort_by { |p| p.total_votes }.reverse
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+      format.xml { render xml: @posts }
+    end
   end
 
   # GET /posts/:id
   def show
     @comment = Comment.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @post }
+      format.xml { render xml: @post }
+    end
   end
 
   # GET /posts/new

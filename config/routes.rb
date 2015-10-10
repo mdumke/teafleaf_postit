@@ -20,4 +20,8 @@ PostitTemplate::Application.routes.draw do
 
   resources :categories, only: [:new, :create, :show]
   resources :users, only: [:show, :create, :edit, :update]
+
+  get '/api/posts(.:format)',     to: 'posts#index'
+  get '/api/posts/:id(.:format)', to: 'posts#show'
+  get '/api/users/:id(.:format)', to: 'users#show'
 end

@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   before_action :require_same_user, only: [:edit, :update]
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @user }
+      format.xml { render xml: @user }
+    end
   end
 
   def new
