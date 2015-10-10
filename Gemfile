@@ -24,6 +24,7 @@ group :development do
   gem 'quiet_assets'
   gem 'pry-rails'
   gem 'sqlite3'
+  gem 'awesome_print'
 end
 
 group :production do
